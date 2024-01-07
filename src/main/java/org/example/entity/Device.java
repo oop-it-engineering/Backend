@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 public class Device {
     private int deviceId;
     private String dName;   //장비 이름
-    private String dCategory;   // 장비 카테고리(노트북,모바일기기)
+    private int dCategory;   // 장비 카테고리(노트북,모바일기기)
     private String dVersion;    //os 버전
     private boolean dRes;   //장비 예약 유무, 1이면 대여 가능
     private boolean dResConf;   //장비 예약 확정 유무, 1이면 예약 확정 -> 대여중
@@ -12,8 +12,8 @@ public class Device {
 
     public Device() {}  //생성자
 
-    //getter&setter
 
+    //getter&setter
 
     public int getDeviceId() {
         return deviceId;
@@ -31,11 +31,11 @@ public class Device {
         this.dName = dName;
     }
 
-    public String getdCategory() {
+    public int getdCategory() {
         return dCategory;
     }
 
-    public void setdCategory(String dCategory) {
+    public void setdCategory(int dCategory) {
         this.dCategory = dCategory;
     }
 
