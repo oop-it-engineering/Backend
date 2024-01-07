@@ -1,8 +1,13 @@
 package org.example.entity;
+import java.sql.Timestamp;
 
 public class User {
     private String userId;
     private String userName;
+    private int deviceId;
+    private Timestamp resTime;
+    private Timestamp resConfTime;
+
 
     //생성자
     public User() {}
@@ -30,5 +35,29 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public int getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(int deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    public Timestamp getResTime() {
+        return resTime;
+    }
+
+    public void setResTime(Timestamp resTime) {
+        this.resTime = resTime;
+    }
+
+    public Timestamp getResConfTime() {
+        return resConfTime;
+    }
+
+    public void setResConfTime(Timestamp resConfTime) {
+        this.resConfTime = resConfTime;
     }
 }
