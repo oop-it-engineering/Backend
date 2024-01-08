@@ -11,4 +11,7 @@ public class DeviceController {
         Device device = deviceService.getDevice(dCategory);
         return device;
     }
+
+
+
 }
