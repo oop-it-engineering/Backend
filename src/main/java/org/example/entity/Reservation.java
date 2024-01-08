@@ -10,6 +10,7 @@ public class Reservation {
     private Timestamp resConfTime;
     private String userId;
     private int deviceId;
+    private Device device;
 
     public Reservation() {}
 
@@ -67,5 +68,13 @@ public class Reservation {
 
     public void setDeviceId(int deviceId) {
         this.deviceId = deviceId;
+    }
+
+    public Device getDevice() {
+        return device;
+    }
+
+    public void setDevice(Device device) {
+        this.device = device;
     }
 }

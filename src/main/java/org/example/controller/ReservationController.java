@@ -1,6 +1,9 @@
 package org.example.controller;
 
+import org.example.entity.Reservation;
 import org.example.service.ReservationService;
+
+import java.util.List;
 
 public class ReservationController {
     private ReservationService reservationService = new ReservationService();
@@ -15,4 +18,14 @@ public class ReservationController {
         }
         return result;
     }
+    //수령 대기중인 장비 목록 조회
+
+    public List<Reservation> getRes(String userId) {
+        List<Reservation> res = reservationService.getRes(userId);
+        return  res;
+    }
+    
+
+    //대여중인 장비 목록 조회
+
 }
