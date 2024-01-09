@@ -7,6 +7,7 @@ import org.example.jdbctemplate.JdbcTemplate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 import static org.example.jdbctemplate.JdbcTemplate.*;
 
@@ -14,11 +15,14 @@ import static org.example.jdbctemplate.JdbcTemplate.*;
 public class DeviceService {
     private DeviceDao deviceDao = new DeviceDao();
 
-    //장비 조회
-    public Device getDevice(int dCategory) {
+    public List<Device> getDevice(String dCategory) {
         Connection conn = JdbcTemplate.getConnection();
-        Device device = deviceDao.getDevice(conn, dCategory);
-        return device;
+
+        List<Device> devices = deviceDao.getDevice(conn, dCategory);
+
+        close(conn);
+
+        return devices;
     }
 
 
