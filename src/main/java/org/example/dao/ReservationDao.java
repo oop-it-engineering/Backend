@@ -84,4 +84,39 @@ public class ReservationDao {
     }
 
     //대여중인 장비 목록 조회
+    public List<Reservation> getResConf(Connection conn, String userId) {
+        String sql = "SELECT r.RES_TIME, d.D_NAME, d.D_VERSION" +
+                "FROM RESERVATION r" +
+                "JOIN DEVICE d ON r.DEVICE_ID = d.DEVICE_ID" +
+                "WHERE r.USER_ID = ? AND r.D_RES_CONF = 1";
+        PreparedStatement pstmt = null;
+        ResultSet rset = null;
+        List<Reservation> reservations = new ArrayList<>();
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, userId);
+            rset = pstmt.executeQuery();
+
+            while (rset.next()){
+                String dname = rset.getString("D_NAME");
+                String dversion = rset.getString("D_VERSION");
+                Timestamp resTime = rset.getTimestamp("RES_TIME");
+
+                Device device = new Device();
+                device.setdName(dname);
+                device.setdVersion(dversion);
+
+                Reservation reservation = new Reservation();
+                reservation.setDevice(device);
+                reservation.setResTime(resTime);
+
+                reservations.add(reservation);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return reservations;
+    }
+
 }

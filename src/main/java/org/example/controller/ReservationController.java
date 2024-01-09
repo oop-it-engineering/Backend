@@ -21,11 +21,14 @@ public class ReservationController {
     //수령 대기중인 장비 목록 조회
 
     public List<Reservation> getRes(String userId) {
-        List<Reservation> res = reservationService.getRes(userId);
-        return  res;
+        List<Reservation> reservations = reservationService.getRes(userId);
+        return  reservations;
     }
-    
 
     //대여중인 장비 목록 조회
+    public List<Reservation> getResConf(String userId) {
+        List<Reservation> reservations = reservationService.getResConf(userId);
+        return  reservations;
+    }
 
 }

@@ -32,14 +32,23 @@ public class ReservationService {
     public List<Reservation> getRes(String userId){
         Connection conn = JdbcTemplate.getConnection();
 
-        List<Reservation> res = reservationDao.getRes(conn, userId);
+        List<Reservation> reservations = reservationDao.getRes(conn, userId);
 
         close(conn);
 
-        return res;
+        return reservations;
     }
 
     //대여중인 장비 목록 조회
+    public List<Reservation> getResConf(String userId){
+        Connection conn = JdbcTemplate.getConnection();
+
+        List<Reservation> reservations = reservationDao.getResConf(conn, userId);
+
+        close(conn);
+
+        return reservations;
+    }
 
 }
 
