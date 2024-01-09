@@ -14,11 +14,11 @@ import static org.example.jdbctemplate.JdbcTemplate.close;
 public class ReservationDao {
     //장비 예약
     public int reservation(Connection conn, int deviceId, String userId) {
-        String insertResSql = "INSERT INTO RESERVATION (USER_ID, DEVICE_ID, D_RES, D_RES_CONF, D_STATUS, RESTIME) VALUES (?,?,1,0,1,?)";
+        String insertResSql = "INSERT INTO RESERVATION (USER_ID, DEVICE_ID, D_RES, D_RES_CONF, D_STATUS, RES_TIME) VALUES (?,?,1,0,1,?)";
 
         String updateDeviceSql = "UPDATE DEVICE d " +
                 "INNER JOIN RESERVATION r ON d.DEVICE_ID = r.DEVICE_ID " +
-                "SET d.D_NT = d.D_CNT - 1 " +
+                "SET d.D_CNT = d.D_CNT - 1 " +
                 "WHERE d.DEVICE_ID = ? AND d.D_CNT > 0";
         PreparedStatement pstmt = null;
         int result = 0;
@@ -49,10 +49,10 @@ public class ReservationDao {
 
     //수령 대기중인 장비 목록 조회
     public List<Reservation> getRes(Connection conn, String userId) {
-        String sql = "SELECT r.RES_TIME, d.D_NAME, d.D_VERSION" +
-                    "FROM RESERVATION r" +
-                    "JOIN DEVICE d ON r.DEVICE_ID = d.DEVICE_ID" +
-                    "WHERE r.USER_ID = ? AND r.D_RES = 1";
+        String sql = "SELECT r.RES_TIME, d.D_NAME, d.D_VERSION " +
+                    "FROM RESERVATION r " +
+                    "JOIN DEVICE d ON r.DEVICE_ID = d.DEVICE_ID " +
+                    "WHERE r.USER_ID = ? AND r.D_RES = 1 ";
         PreparedStatement pstmt = null;
         ResultSet rset = null;
         List<Reservation> reservations = new ArrayList<>();
@@ -85,10 +85,10 @@ public class ReservationDao {
 
     //대여중인 장비 목록 조회
     public List<Reservation> getResConf(Connection conn, String userId) {
-        String sql = "SELECT r.RES_TIME, d.D_NAME, d.D_VERSION" +
-                "FROM RESERVATION r" +
-                "JOIN DEVICE d ON r.DEVICE_ID = d.DEVICE_ID" +
-                "WHERE r.USER_ID = ? AND r.D_RES_CONF = 1";
+        String sql = "SELECT r.RES_TIME, d.D_NAME, d.D_VERSION " +
+                "FROM RESERVATION r " +
+                "JOIN DEVICE d ON r.DEVICE_ID = d.DEVICE_ID " +
+                "WHERE r.USER_ID = ? AND r.D_RES_CONF = 1 ";
         PreparedStatement pstmt = null;
         ResultSet rset = null;
         List<Reservation> reservations = new ArrayList<>();
