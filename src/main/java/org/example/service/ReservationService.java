@@ -13,10 +13,10 @@ import static org.example.jdbctemplate.JdbcTemplate.*;
 public class ReservationService {
     private ReservationDao reservationDao = new ReservationDao();
     //장비 예약
-    public int reservation(int deviceId, String userId) {
+    public int reservation(int deviceId, String userId,String resConfTime) {
         int result = -10;
         Connection conn = JdbcTemplate.getConnection();
-        result = reservationDao.reservation(conn,deviceId, userId);
+        result = reservationDao.reservation(conn,deviceId, userId,resConfTime);
         if (result >0) {
             commit(conn);
 

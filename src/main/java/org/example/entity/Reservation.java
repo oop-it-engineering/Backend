@@ -7,7 +7,7 @@ public class Reservation {
     private boolean dResConf;   //장비 예약 확정 유무, 1이면 예약 확정 -> 대여중
     private boolean dStatus;    //장비 손상 및 분실 유무, 0이면 이용 가능한 장비
     private Timestamp resTime;
-    private Timestamp resConfTime;
+    private String resConfTime;
     private String userId;
     private int deviceId;
     private Device device;
@@ -46,11 +46,11 @@ public class Reservation {
         this.resTime = resTime;
     }
 
-    public Timestamp getResConfTime() {
+    public String getResConfTime() {
         return resConfTime;
     }
 
-    public void setResConfTime(Timestamp resConfTime) {
+    public void setResConfTime(String resConfTime) {
         this.resConfTime = resConfTime;
     }
 

@@ -8,9 +8,9 @@ public class JdbcTemplate {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(
-                    "jdbc:mysql://39.123.73.99:3306/oop_winter?serverTime=UTC&characterEncoding=UTF-8",
+                    "jdbc:mysql://localhost:3306/oop_winter?serverTime=UTC&characterEncoding=UTF-8",
                     "root",
-                    "root");
+                    "6820");
             conn.setAutoCommit(false);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
